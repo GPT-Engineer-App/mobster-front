@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Container, Flex, Heading, Stack, Text, useToast, VStack } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, Stack, Text, useToast, VStack, Input } from "@chakra-ui/react";
 import { FaUserPlus, FaSignInAlt, FaSkullCrossbones } from "react-icons/fa";
 
 const Index = () => {
@@ -38,27 +38,29 @@ const Index = () => {
           <Text mt={4}>Become the most respected mafioso in the underworld.</Text>
         </Box>
 
-        <Flex justify="space-between">
+        <VStack spacing={4} align="center">
           {!isLoggedIn ? (
-            <VStack>
-              <Button leftIcon={<FaUserPlus />} colorScheme="teal" variant="solid">
+            <>
+              <Input placeholder="Username" />
+              <Input placeholder="Password" type="password" />
+              <Button leftIcon={<FaUserPlus />} colorScheme="teal" variant="solid" minW="200px">
                 Sign Up
               </Button>
-              <Button leftIcon={<FaSignInAlt />} colorScheme="teal" variant="outline" onClick={() => handleLogin("test@example.com", "password")}>
+              <Button leftIcon={<FaSignInAlt />} colorScheme="teal" variant="outline" onClick={() => handleLogin("test@example.com", "password")} minW="200px">
                 Log In
               </Button>
-            </VStack>
+            </>
           ) : (
-            <VStack>
+            <>
               <Button leftIcon={<FaSkullCrossbones />} colorScheme="red" variant="solid">
                 Commit a Crime
               </Button>
               <Button colorScheme="teal" variant="outline" onClick={handleLogout}>
                 Log Out
               </Button>
-            </VStack>
+            </>
           )}
-        </Flex>
+        </VStack>
       </Stack>
     </Container>
   );
